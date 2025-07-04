@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32-CAM Live Stream</title>
+    <style>
+        /* Reset and box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container for centering content */
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #4a90e2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Styling for the video container */
+        .video-container {
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* Aspect ratio 16:9 */
+            border-radius: 10px;
+            background: #f4f4f4;
+        }
+
+        /* The video itself */
+        .video-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Button style */
+        .reload-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #4a90e2;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .reload-btn:hover {
+            background-color: #357ab7;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>ESP32-CAM Live Stream</h1>
+
+    <!-- Video container with aspect ratio control -->
+    <div class="video-container">
+        <img src="{{ url_for('video_feed') }}" alt="Live Stream">
+    </div>
+
+    <!-- Reload Button -->
+    <button class="reload-btn" onclick="window.location.reload()">Reload Stream</button>
+</div>
+
+</body>
+</html>
